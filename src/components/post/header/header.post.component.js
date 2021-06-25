@@ -1,28 +1,26 @@
 import React, {useState} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {primary} from '../../../assets/styles/primary.styles';
 import {HapticFeedBack} from '../../assets/hapticFeedback.component';
-import {Avatar} from 'react-native-elements';
+import {Avatar, Icon} from 'react-native-elements';
 import ProfilePicture from '../../../assets/images/profile-picture.jpg';
-import verifiedUser from '../../../assets/images/verified.png';
-import Feather from 'react-native-vector-icons/Feather';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import ProfileHeaderComponent from '../../profileHeader/profileHeader.component';
 
-const PostHeader = (props) => {
-
-    const [state, setState] = useState({
-        verifiedUser: props.verifiedUser
-    });
-
+const PostHeader = (data) => {
     return(
-        <View style={primary().flexRow}>
+        <View style={[primary().flexRow,{marginTop: 3}]}>
             <View style={{
-                width: "18%", justifyContent: 'center', alignItems: 'flex-start',
+                width: "18%",
+                justifyContent: 'center',
+                alignItems: 'flex-start',
                 height: 60
             }}>
-                <TouchableOpacity style={styles.profilePhoto}
-                                  activeOpacity={primary().activeOpacity}
-                                  onPress={() => HapticFeedBack('impactLight')}
+                <TouchableOpacity
+                    style={styles.profilePhoto}
+                    activeOpacity={primary().activeOpacity}
+                    onPress={() => {
+                        HapticFeedBack('impactLight')
+                    }}
                 >
                     <Avatar
                         size="medium"
@@ -34,25 +32,21 @@ const PostHeader = (props) => {
             </View>
             <View style={{justifyContent: 'center', alignItems: 'flex-start'}}>
                 <View style={primary().flexRow}>
-                    <View style={{
-                        width: '70%',
-                        justifyContent: 'center',
-                        alignItems: 'flex-start',
-                    }}>
-                        <View style={primary().flexRow}>
-                            <View>
-                                <Text style={styles.name}>{props.name}</Text>
+                    <ProfileHeaderComponent
+                        username={data.user.username}
+                        verified={data.user.verified}
+                        style={{width: "70%"}}
+                        content={
+                            <View style={primary().flexRow}>
+                                <View style={styles.timeStampContainer}>
+                                    <Text style={primary().timestamp}>{data.post.timestamp}</Text>
+                                </View>
+                                <View style={styles.timeStampFollowingContainer}>
+                                    <Icon name="user-check" type="feather" color={primary().timestamp.color} size={15}/>
+                                </View>
                             </View>
-                            {
-                                state.verifiedUser ? (
-                                    <View style={{marginLeft: 5}}>
-                                        <Image source={verifiedUser} style={{width: 15, height: 15}}/>
-                                    </View>
-                                ): null
-                            }
-                        </View>
-                    </View>
-
+                        }
+                    />
                     <View style={{width: '21%', alignItems: 'flex-end'}}>
                         <TouchableOpacity
                             activeOpacity={primary().activeOpacity}
@@ -60,19 +54,9 @@ const PostHeader = (props) => {
                             onPress={() => alert('hi')}
                         >
                             <View>
-                                <MaterialCommunityIcons name="dots-horizontal" color={primary().textColor} size={26}/>
+                                <Icon name="dots-horizontal" type="material-community" color={primary().textColor} size={26}/>
                             </View>
                         </TouchableOpacity>
-                    </View>
-
-
-                </View>
-                <View style={primary().flexRow}>
-                    <View style={styles.timeStampContainer}>
-                        <Text style={primary().timestamp}>{props.timestamp}</Text>
-                    </View>
-                    <View style={styles.timeStampFollowingContainer}>
-                        <Feather name="user-check" style={{color: primary().timestamp.color}} size={15}/>
                     </View>
                 </View>
             </View>
@@ -96,7 +80,7 @@ const styles = StyleSheet.create({
         color: primary().textColor
     },
     timeStampContainer:{
-        marginLeft: -3,
+        marginLeft: 0,
         marginRight: 5,
         justifyContent: 'center', alignItems: 'flex-start'
     },

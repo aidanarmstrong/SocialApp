@@ -1,15 +1,14 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from '../screens/home.screen';
-import HeaderComponent from '../components/header.component';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {primary, stackHeaderStyle} from '../assets/styles/primary.styles';
-import MaterialBottomTabs from '../components/materialBottomTabs';
-import {Image, Text, TouchableOpacity, View} from 'react-native';
 import SettingsStack from './settings.stack';
 import Logo from '../assets/images/logo.png';
 import {HapticFeedBack} from '../components/assets/hapticFeedback.component';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import CommentScreen from '../screens/comment.screen';
+import RightHeaderComponent from '../components/header/right.header.component';
+import CenterHeaderComponent from '../components/header/center.header.component';
+import LeftHeaderComponent from '../components/header/left.header.component';
 const Stack = createStackNavigator();
 
 const FeedStack = () => {
@@ -25,35 +24,55 @@ const FeedStack = () => {
                 name="Home" component={HomeScreen}
                 options={({ navigation }) => ({
                     headerShown: true,
-                    headerTitle: () =>
-                        <HeaderComponent
-                            navigation={navigation}
-                            headerLeft={
-                                <Text style={{fontSize: 22, fontWeight: '600', marginLeft: 15, color: primary().textColor}}>
-                                    Feed
-                                </Text>
-                            }
-                            headerCenter={
-                                <View>
-                                    <Image
-                                        style={{width: 30, height: 30}}
-                                        source={Logo}
-                                    />
-                                </View>
-                            }
-                            headerRight={
-                                <TouchableOpacity
-                                    activeOpacity={primary().activeOpacity}
-                                    onPress={() => {
-                                        HapticFeedBack('impactLight')
-                                        navigation.navigate('SettingsStack')
-                                    }}
-                                >
-                                    <MaterialIcons style={{color: primary().textColor}} name="admin-panel-settings" size={26} />
-                                </TouchableOpacity>
-                            }
-                        />,
-                    headerLeft: null,
+                    headerLeft: () => (
+                       <LeftHeaderComponent
+                           title="Feed"
+                           titleStyle={{fontSize: 22, fontWeight: '600', marginLeft: 0, color: primary().textColor}}
+                       />
+                    ),
+                    headerTitle: () => (
+                       <CenterHeaderComponent
+                           isImage={true}
+                           image={Logo}
+                       />
+                    ),
+
+                    headerRight: () => (
+                        <RightHeaderComponent
+                            isButton={true}
+                            iconName="admin-panel-settings"
+                            iconColor={primary().textColor}
+                            iconSize={26}
+                            onPress={() => {
+                                HapticFeedBack('impactLight')
+                                navigation.navigate('SettingsStack')
+                            }}
+                        />)
+                    ,
+                    headerStyle: [
+                        stackHeaderStyle().headerBackground,
+                        stackHeaderStyle().emptyShadowOffset
+                    ]
+                })}
+            />
+            <Stack.Screen
+                name="Comments" component={CommentScreen}
+                options={({ navigation }) => ({
+                    headerShown: true,
+                    headerTitle: "Comments",
+                    headerTitleStyle: stackHeaderStyle().title,
+                    headerLeft: () => (
+                        <LeftHeaderComponent
+                            isButton={true}
+                            iconName="keyboard-backspace"
+                            iconColor={primary().textColor}
+                            iconSize={26}
+                            onPress={() => {
+                                HapticFeedBack('impactLight')
+                                navigation.goBack()
+                            }}
+                        />
+                    ),
                     headerStyle: [
                         stackHeaderStyle().headerBackground,
                         stackHeaderStyle().emptyShadowOffset

@@ -7,6 +7,8 @@ import {Text, TouchableOpacity} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {primary, stackHeaderStyle} from '../assets/styles/primary.styles';
 import {HapticFeedBack} from '../components/assets/hapticFeedback.component';
+import {Icon} from 'react-native-elements';
+import LeftHeaderComponent from '../components/header/left.header.component';
 const Stack = createStackNavigator();
 
 const SettingsStack = () => {
@@ -23,25 +25,20 @@ const SettingsStack = () => {
                 component={SettingsScreen}
                 options={({ navigation }) => ({
                     headerShown: true,
-                    headerTitle: () =>
-                        <HeaderComponent
-                            navigation={navigation}
-                            headerLeft={
-                                <TouchableOpacity
-                                    activeOpacity={primary().activeOpacity}
-                                    onPress={() => {
-                                        HapticFeedBack('impactLight')
-                                        navigation.goBack()}
-                                    }
-                                >
-                                    <MaterialCommunityIcons style={{color: primary().textColor}} name="keyboard-backspace" size={26} />
-                                </TouchableOpacity>
-                            }
-                            headerCenter={
-                                <Text style={{color: primary().textColor}}>Settings</Text>
-                            }
-                        />,
-                    headerLeft: null,
+                    headerTitle: "Settings",
+                    headerTitleStyle: stackHeaderStyle().title,
+                    headerLeft: () => (
+                        <LeftHeaderComponent
+                            isButton={true}
+                            iconName="keyboard-backspace"
+                            iconColor={primary().textColor}
+                            iconSize={26}
+                            onPress={() => {
+                                HapticFeedBack('impactLight')
+                                navigation.goBack()
+                            }}
+                        />
+                    ),
                     headerStyle: [
                         stackHeaderStyle().headerBackground,
                         stackHeaderStyle().emptyShadowOffset

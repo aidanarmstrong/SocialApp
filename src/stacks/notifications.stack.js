@@ -4,6 +4,7 @@ import NotificationsScreen from '../screens/notifications.screen';
 import HeaderComponent from '../components/header.component';
 import {Text} from 'react-native';
 import {primary, stackHeaderStyle} from '../assets/styles/primary.styles';
+import CenterHeaderComponent from '../components/header/center.header.component';
 const Stack = createStackNavigator();
 
 const NotificationsStack = () => {
@@ -14,14 +15,12 @@ const NotificationsStack = () => {
                 component={NotificationsScreen}
                 options={({ navigation }) => ({
                     headerShown: true,
-                    headerTitle: () =>
-                        <HeaderComponent
-                            navigation={navigation}
-                            headerCenter={
-                                <Text style={{color: primary().textColor}}>Notifications</Text>
-                            }
-                        />,
-                    headerLeft: null,
+                    headerTitle: () => (
+                        <CenterHeaderComponent
+                            title="Notifications"
+                            titleStyle={stackHeaderStyle().title}
+                        />
+                    ),
                     headerStyle: [
                         stackHeaderStyle().headerBackground,
                         stackHeaderStyle().emptyShadowOffset
@@ -30,6 +29,6 @@ const NotificationsStack = () => {
             />
         </Stack.Navigator>
     )
-}
+};
 
 export default NotificationsStack;

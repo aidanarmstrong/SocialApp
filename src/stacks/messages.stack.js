@@ -4,6 +4,7 @@ import MessagesScreen from '../screens/messages.screen';
 import HeaderComponent from '../components/header.component';
 import {Text} from 'react-native';
 import {primary, stackHeaderStyle} from '../assets/styles/primary.styles';
+import CenterHeaderComponent from '../components/header/center.header.component';
 const Stack = createStackNavigator();
 
 const MessagesStack = () => {
@@ -14,11 +15,12 @@ const MessagesStack = () => {
                 component={MessagesScreen}
                 options={({ navigation }) => ({
                     headerShown: true,
-                    headerTitle: () =>
-                        <HeaderComponent navigation={navigation} headerCenter={
-                            <Text style={{color: primary().textColor}}>Messages</Text> }
-                        />,
-                    headerLeft: null,
+                    headerTitle: () => (
+                        <CenterHeaderComponent
+                            title="Messages"
+                            titleStyle={stackHeaderStyle().title}
+                        />
+                    ),
                     headerStyle: [
                         stackHeaderStyle().headerBackground,
                         stackHeaderStyle().emptyShadowOffset
@@ -27,6 +29,6 @@ const MessagesStack = () => {
             />
         </Stack.Navigator>
     )
-}
+};
 
 export default MessagesStack;

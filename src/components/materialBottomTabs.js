@@ -1,6 +1,5 @@
 import React from "react";
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import FeedStack from '../stacks/feed.stack';
 import SearchStack from '../stacks/search.stack';
 import NotificationsStack from '../stacks/notifications.stack';
@@ -9,9 +8,15 @@ import TestScreen from '../screens/test.screen';
 import {bottomTabsStyles} from '../assets/styles/primary.styles';
 const Tab = createMaterialBottomTabNavigator();
 import {HapticFeedBack} from './assets/hapticFeedback.component';
+import {Icon} from 'react-native-elements';
 
 const MaterialBottomTabs = (props) => {
-    HapticFeedBack('impactLight')
+
+    // Allows a light preassure feedback
+    const tabPressed = () =>{
+        HapticFeedBack('impactLight');
+    }
+
     const iconSize = bottomTabsStyles().bottomIconSize;
     return (
         <Tab.Navigator
@@ -24,11 +29,16 @@ const MaterialBottomTabs = (props) => {
             <Tab.Screen
                 name="HomeTab"
                 component={FeedStack}
+                listeners={() => ({
+                    tabPress: (e) => {
+                        tabPressed();
+                    },
+                })}
                 options={{
                     tabBarIcon: ({ color, focused }) => {
                         return (
-                            focused ? <Ionicons name="md-home" color={color} size={iconSize} />
-                                : <Ionicons name="md-home-outline" color={color} size={iconSize} />
+                            focused ? <Icon name="md-home" type="ionicon" color={color} size={iconSize} />
+                                : <Icon name="md-home-outline" type="ionicon" color={color} size={iconSize} />
                         )
                     },
                 }}
@@ -36,45 +46,65 @@ const MaterialBottomTabs = (props) => {
             <Tab.Screen
                 name="SearchTab"
                 component={SearchStack}
+                listeners={() => ({
+                    tabPress: (e) => {
+                        tabPressed();
+                    },
+                })}
                 options={{
                     tabBarIcon: ({ color, focused }) => (
-                        focused ? <Ionicons name="md-search-sharp" color={color} size={iconSize} />
-                            : <Ionicons name="md-search-outline" color={color} size={iconSize} />
+                        focused ? <Icon name="md-search-sharp" type="ionicon" color={color} size={iconSize} />
+                            : <Icon name="md-search-outline" type="ionicon" color={color} size={iconSize} />
                     ),
                 }}
             />
             <Tab.Screen
                 name="AddTab"
                 component={TestScreen}
+                listeners={() => ({
+                    tabPress: (e) => {
+                        tabPressed();
+                    },
+                })}
                 options={{
                     tabBarIcon: ({ color, focused }) => (
-                        focused ? <Ionicons name="md-add-sharp" color={color} size={iconSize} />
-                            : <Ionicons name="md-add-outline" color={color} size={iconSize} />
+                        focused ? <Icon name="md-add-sharp" type="ionicon" color={color} size={iconSize} />
+                            : <Icon name="md-add-outline" type="ionicon" color={color} size={iconSize} />
                     ),
                 }}
             />
             <Tab.Screen
                 name="NotificationsTab"
                 component={NotificationsStack}
+                listeners={() => ({
+                    tabPress: (e) => {
+                        tabPressed();
+                    },
+                })}
                 options={{
                     tabBarIcon: ({ color, focused }) => (
-                        focused ? <Ionicons name="notifications" color={color} size={iconSize} />
-                            : <Ionicons name="notifications-outline" color={color} size={iconSize} />
+                        focused ? <Icon name="notifications" type="ionicon" color={color} size={iconSize} />
+                            : <Icon name="notifications-outline" type="ionicon" color={color} size={iconSize} />
                     ),
                 }}
             />
             <Tab.Screen
                 name="messagesTab"
                 component={MessagesStack}
+                listeners={() => ({
+                    tabPress: (e) => {
+                        tabPressed();
+                    },
+                })}
                 options={{
                     tabBarIcon: ({ color, focused }) => (
-                        focused? <Ionicons name="chatbubble-sharp" color={color} size={iconSize} />
-                            : <Ionicons name="chatbubble-outline" color={color} size={iconSize} />
+                        focused? <Icon name="chatbubble-sharp" type="ionicon" color={color} size={iconSize} />
+                            : <Icon name="chatbubble-outline" type="ionicon" color={color} size={iconSize} />
                     ),
                 }}
             />
         </Tab.Navigator>
     )
-}
+};
 
 export default MaterialBottomTabs;

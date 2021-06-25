@@ -2,9 +2,11 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import SearchScreen from '../screens/search.screen';
 import HeaderComponent from '../components/header.component';
-import {Text} from 'react-native';
+import {Text, TouchableOpacity} from 'react-native';
 import {primary, stackHeaderStyle} from '../assets/styles/primary.styles';
 const Stack = createStackNavigator();
+import {Icon, SearchBar} from 'react-native-elements';
+import CenterHeaderComponent from '../components/header/center.header.component';
 
 const SearchStack = () => {
     return(
@@ -14,14 +16,12 @@ const SearchStack = () => {
                 component={SearchScreen}
                 options={({ navigation }) => ({
                     headerShown: true,
-                    headerTitle: () =>
-                        <HeaderComponent
-                            navigation={navigation}
-                            headerCenter={
-                                <Text style={{color: primary().textColor}}>Search</Text>
-                            }
-                        />,
-                    headerLeft: null,
+                    headerTitle: () => (
+                        <CenterHeaderComponent
+                            title="Search"
+                            titleStyle={stackHeaderStyle().title}
+                        />
+                    ),
                     headerStyle: [
                         stackHeaderStyle().headerBackground,
                         stackHeaderStyle().emptyShadowOffset

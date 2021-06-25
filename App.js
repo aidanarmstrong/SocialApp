@@ -12,9 +12,10 @@ import type {Node} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import Root from './src/navigation/root.navigation';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import {LogBox} from 'react-native';
 
 
-
+// LogBox.ignoreLogs(['Warning: ...']);
 
 const App: () => Node = () => {
   // const isDarkMode = useColorScheme() === 'dark';

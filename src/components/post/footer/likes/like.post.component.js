@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
-import {primary} from '../../../assets/styles/primary.styles';
-import Fontisto from 'react-native-vector-icons/Fontisto';
-import {HapticFeedBack} from '../../assets/hapticFeedback.component';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {primary} from '../../../../assets/styles/primary.styles';
+import {HapticFeedBack} from '../../../assets/hapticFeedback.component';
+import {Icon} from 'react-native-elements';
 
 
-const LikePostComponent = (props) => {
+const LikePostComponent = (data) => {
 
     const [state, setState] = useState({
-        liked: props.liked,
+        liked: data.liked,
+        likes: data.likes
     });
 
     const selectLike = () => {
@@ -24,9 +25,9 @@ const LikePostComponent = (props) => {
     return(
         <View
             style={{
-                width: '15%',
+                width: '28%',
                 justifyContent: 'center',
-                alignItems: 'center',
+                alignItems: 'flex-start',
             }}
         >
             <TouchableOpacity
@@ -34,14 +35,17 @@ const LikePostComponent = (props) => {
                 style={styles.likeButton}
                 onPress={() => selectLike()}
             >
-                <View>
+                <View style={primary().flexRow}>
                     {
                         state.liked ? (
-                            <Fontisto name="heart" color="#d43737" size={20}/>
+                            <Icon name="heart" type="fontisto" color="#d43737" size={20} />
                         ) : (
-                            <Fontisto name="heart-alt" color={primary().textColor} size={20}/>
+                            <Icon name="heart-alt" type="fontisto" color="#d43737" size={20} />
                         )
                     }
+                    <View style={{justifyContent: 'center'}}>
+                        <Text style={styles.likes}>{state.likes}</Text>
+                    </View>
                 </View>
             </TouchableOpacity>
 
@@ -51,7 +55,12 @@ const LikePostComponent = (props) => {
 
 const styles = StyleSheet.create({
     likeButton: {
+        marginLeft: 20,
         paddingBottom: 15
+    },
+    likes: {
+        marginLeft: 5,
+        color: primary().textColor
     }
 });
 

@@ -1,5 +1,6 @@
 import React from "react";
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {isAndroid} from '../assets/styles/primary.styles';
 
 const HeaderComponent = (props) => {
     return (
@@ -44,7 +45,9 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     headerLeftRight:{
-        width: 80, justifyContent: 'center', alignItems: 'center'
+        justifyContent: 'center',
+        width: isAndroid() ? 50 : 80,
+        alignItems: 'center'
     }
 })
 

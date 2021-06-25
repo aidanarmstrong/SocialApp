@@ -3,13 +3,10 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {feedStyles, primary} from '../../../assets/styles/primary.styles';
 import {HapticFeedBack} from '../../assets/hapticFeedback.component';
 
-const BodyText = (props) => {
-    const [state] = useState({
-        text: props.feedText
-    });
+const BodyText = (data) => {
 
     const [textShown, setTextShown] = useState(false); //To show ur remaining Text
-    const [length] = useState(8)
+    const [length] = useState(9)
     const [lengthMore, setLengthMore] = useState(false); //to show the "Read more & Less Line"
     const toggleNumberOfLines = () => { //To toggle the show text or hide it
         HapticFeedBack('impactLight');
@@ -23,11 +20,11 @@ const BodyText = (props) => {
     return(
         <View style={{marginLeft: 20, marginRight: 20, marginTop: 5, marginBottom: 18}}>
             <Text
-                style={styles.feedText}
+                style={styles.postMessage}
                 onTextLayout={onTextLayout}
                 numberOfLines={textShown ? undefined : length}
             >
-                {state.text}
+                {data.postMessage}
             </Text>
             {
                 lengthMore ? (
@@ -47,7 +44,7 @@ const styles = StyleSheet.create({
     seeMore: {
         color: feedStyles().seeMoreColor,
     },
-    feedText: {
+    postMessage: {
         fontSize: 15,
         lineHeight: 20,
         color: primary().textColor,

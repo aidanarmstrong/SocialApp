@@ -4,15 +4,14 @@ import {feedStyles} from '../../assets/styles/primary.styles';
 import PostHeader from './header/header.post.component';
 import BodyText from './body/text.post.component';
 import PostFooter from './footer/footer.post.component';
-import BottomSheet from 'reanimated-bottom-sheet';
 
-const PostComponent = ({key, data}) =>{
+const PostComponent = ({key, data, navigation}) =>{
 
     return (
         <View style={styles.card} key={key}>
             <PostHeader {...data.item}/>
-            <BodyText feedText={data.item.feedText}/>
-            <PostFooter {...data}/>
+            <BodyText postMessage={data.item.post.postMessage}/>
+            <PostFooter data={data.item} navigation={navigation}/>
         </View>
     )
 }
@@ -20,9 +19,15 @@ const PostComponent = ({key, data}) =>{
 const styles = StyleSheet.create({
     card: {
         backgroundColor: feedStyles().cardBackgroundColor,
+        marginTop: 5,
         marginBottom: 5,
+        marginLeft: 15,
+        marginRight: 15,
         borderRadius: 4,
     },
+    comments: {
+
+    }
 });
 
 export default PostComponent;
