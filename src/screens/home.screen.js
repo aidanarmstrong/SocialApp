@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
-import {StyleSheet, FlatList, ScrollView, View, RefreshControl} from 'react-native';
+import {StyleSheet, FlatList, ScrollView, View, RefreshControl, Text, TextInput, TouchableOpacity} from 'react-native';
 import CustomSafeAreaView from '../components/assets/customSafeAreaView.component';
 import {feedStyles, primary} from '../assets/styles/primary.styles';
 import PostComponent from '../components/post/post.component';
+import {Avatar, Divider, Icon} from 'react-native-elements';
+import ProfilePicture from '../assets/images/profile-picture.jpg';
 
-const HomeScreen = (props) => {
+const HomeScreen = ({navigation}) => {
 
     const [state, setState] = useState({
         refreshing: false,
@@ -14,7 +16,7 @@ const HomeScreen = (props) => {
         {
             id: 1,
             user: {
-                username: "Aidan Armstrong",
+                username: "aidanjarmstrong",
                 verified: true,
                 following: true
             },
@@ -35,7 +37,7 @@ const HomeScreen = (props) => {
                     {
                         id: "1",
                         user: {
-                            username: "Ben Lynch",
+                            username: "dillon.dolan",
                             follower: true,
                             verified: false,
                         },
@@ -45,7 +47,7 @@ const HomeScreen = (props) => {
                     {
                         id: "2",
                         user: {
-                            username: "Ben Lynch",
+                            username: "benlynch23",
                             follower: true,
                             verified: false,
                         },
@@ -58,7 +60,7 @@ const HomeScreen = (props) => {
         {
             id: 2,
             user: {
-                username: "Jack Bennet",
+                username: "jack.bennet45",
                 verified: false,
                 following: true
             },
@@ -76,7 +78,7 @@ const HomeScreen = (props) => {
                     {
                         id: "1",
                         user: {
-                            username: "Neil Armstrong",
+                            username: "neil_armstrong123",
                             follower: true,
                             verified: false,
                         },
@@ -89,7 +91,7 @@ const HomeScreen = (props) => {
         {
             id: 3,
             user: {
-                username: "Kate Armstrong",
+                username: "kate_armstrong",
                 verified: false,
                 following: true
             },
@@ -99,7 +101,7 @@ const HomeScreen = (props) => {
                 feedPhoto: false,
                 feedVideo: false,
                 liked: false,
-                numberOfLikes: "12,5K",
+                numberOfLikes: "12.5K",
             },
             comments: {
                 numberOfComments: '3',
@@ -107,7 +109,7 @@ const HomeScreen = (props) => {
                     {
                         id: "1",
                         user: {
-                            username: "Aidan Armstrong",
+                            username: "aidanjarmstrong",
                             follower: true,
                             verified: false,
                         },
@@ -117,7 +119,7 @@ const HomeScreen = (props) => {
                     {
                         id: "2",
                         user: {
-                            username: "Niall Armstrong",
+                            username: "niall_armstrong",
                             follower: true,
                             verified: true,
                         },
@@ -127,12 +129,12 @@ const HomeScreen = (props) => {
                     {
                         id: "3",
                         user: {
-                            username: "Theresa Armstrong",
+                            username: "tess_armstrong",
                             follower: true,
                             verified: false,
                         },
                         timestamp: "23 mins ago",
-                        comment: "love you xxxxxxxxm"
+                        comment: "great..."
                     },
                 ]
             }
@@ -159,7 +161,7 @@ const HomeScreen = (props) => {
                     {
                         id: "1",
                         user: {
-                            username: "Aidan Armstrong",
+                            username: "aidanjarmstrong",
                             follower: true,
                             verified: true,
                         },
@@ -169,7 +171,7 @@ const HomeScreen = (props) => {
                     {
                         id: "2",
                         user: {
-                            username: "Jack Lopez",
+                            username: "jack_lopez12",
                             follower: true,
                             verified: false,
                         },
@@ -179,7 +181,7 @@ const HomeScreen = (props) => {
                     {
                         id: "3",
                         user: {
-                            username: "Ben Garret",
+                            username: "ben.garret",
                             follower: true,
                             verified: false,
                         },
@@ -189,7 +191,7 @@ const HomeScreen = (props) => {
                     {
                         id: "4",
                         user: {
-                            username: "Janette Brandy",
+                            username: "janette.brandy",
                             follower: true,
                             verified: false,
                         },
@@ -199,7 +201,7 @@ const HomeScreen = (props) => {
                     {
                         id: "5",
                         user: {
-                            username: "Larry Page",
+                            username: "larrypage",
                             follower: true,
                             verified: true,
                         },
@@ -227,12 +229,89 @@ const HomeScreen = (props) => {
                     <RefreshControl
                         refreshing={state.refreshing}
                         onRefresh={() => onRefresh()}
-                        title=""
                         tintColor={primary().textColor}
                     />
                 }
                 renderItem={ (data, key) => (
-                    <PostComponent data={data} key={key} navigation={props.navigation}/>
+                    <PostComponent data={data} key={key} navigation={navigation}/>
+                )}
+                ListHeaderComponent={() =>(
+                    <View style={{ paddingBottom: 1, backgroundColor: primary().backgroundColor}}>
+                        <View style={primary().flexRow}>
+                            <View style={[primary().alignEnd, {width: "15%"}]}>
+                                <View style={styles.profilePhoto}>
+                                    <Avatar
+                                        size="small"
+                                        overlayContainerStyle={{backgroundColor: 'white'}}
+                                        rounded
+                                        source={ProfilePicture}
+                                    />
+                                </View>
+                            </View>
+                            <View
+                                style={{
+                                    width: "80%",
+                                    justifyContent: 'center',
+                                    alignItems: 'flex-start',
+                                }}
+                            >
+                                <TouchableOpacity
+                                    style={{
+                                        width: "85%",
+                                    }}
+                                    activeOpacity={0.3}
+                                    onPress={() => navigation.navigate('PostScreen')}
+                                >
+                                    <Text style={{color: primary().textColor}}>What's new?</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                        <View style={{marginLeft: 20, marginRight: 20, marginTop: 0, marginBottom: 10}}>
+                            <View style={[{marginTop: 10}, primary().flexRow]}>
+
+                                <View style={{width: "50%"}}/>
+
+                                <View style={[{width: "50%"}, primary().alignEnd]}>
+                                   <View style={primary().flexRow}>
+                                       <View style={[{marginRight: 15}, primary().alignCenter]}>
+                                           <TouchableOpacity
+                                               activeOpacity={primary().activeOpacity}
+                                               onPress={() => navigation.navigate('PostScreen')}
+                                           >
+                                               <Icon name="attachment" type="entypo" size={20} color={primary().lightText}/>
+                                           </TouchableOpacity>
+                                       </View>
+                                       <View style={[{marginRight: 15}, primary().alignCenter]}>
+                                           <TouchableOpacity
+                                               activeOpacity={primary().activeOpacity}
+                                               onPress={() => navigation.navigate('PostScreen')}
+                                           >
+                                               <Icon name="emoji-happy" type="entypo" size={20} color={primary().lightText}/>
+                                           </TouchableOpacity>
+                                       </View>
+                                       <View style={{marginRight: 8}}>
+                                           <TouchableOpacity
+                                               style={{
+                                                   padding: 8,
+                                                   paddingRight: 20,
+                                                   paddingLeft: 20,
+                                                   borderWidth: 1,
+                                                   borderStyle: 'solid',
+                                                   borderRadius: 20,
+                                                   borderColor: primary().lightText,
+                                               }}
+                                               activeOpacity={primary().activeOpacity}
+                                               onPress={() => navigation.navigate('PostScreen')}
+                                           >
+                                               <Text style={{color: primary().textColor}}>Post</Text>
+                                           </TouchableOpacity>
+                                       </View>
+                                   </View>
+                                </View>
+
+                            </View>
+                        </View>
+                    </View>
                 )}
             />
         </CustomSafeAreaView>
@@ -240,7 +319,15 @@ const HomeScreen = (props) => {
 }
 
 const styles = StyleSheet.create({
-
+    profilePhoto:{
+        marginRight: 10,
+        padding: 10,
+        paddingRight: 1,
+        shadowColor: '#fff',
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 0.8,
+        shadowRadius: 1,
+    },
 });
 
 export default HomeScreen;

@@ -6,40 +6,52 @@ import {Icon} from 'react-native-elements';
 
 const RightHeaderComponent = (
     {
-        title,
-        titleStyle,
-        iconName,
-        iconType,
-        iconSize,
-        iconColor,
-        onPress,
-        isButton,
+        title, // string - text to be displayed
+        titleStyle, // object of styles
+        iconName, // string - name of icon
+        iconType, // string - name of icon family
+        iconSize, // integer - size of icon
+        iconColor, // string - icon colour
+        onPress, // function - passes function to onPress
+        button, // boolean
+        buttonStyle, // object of styles
+        children, // children component
     }
 ) => {
-    return(
-        <View style={styles.container}>
-            {
-                isButton ? (
-                    <TouchableOpacity
-                        activeOpacity={primary().activeOpacity}
-                        onPress={onPress}
-                    >
-                        <Icon color={iconColor} name={iconName} type={iconType} size={iconSize} />
-                    </TouchableOpacity>
-                ): (
-                    <Text style={titleStyle}>
-                        {title}
-                    </Text>
-                )
-            }
-        </View>
-    )
+
+    if(button){
+        return(
+            <View style={styles.container}>
+                <TouchableOpacity
+                    style={buttonStyle}
+                    activeOpacity={primary().activeOpacity}
+                    onPress={onPress}
+                >
+                    <Icon color={iconColor} name={iconName} type={iconType} size={iconSize} />
+                </TouchableOpacity>
+            </View>
+        )
+    }
+
+    if(title){
+        return (
+            <View style={styles.container}>
+                <Text style={titleStyle}>
+                    {title}
+                </Text>
+            </View>
+        )
+    }
+   return (
+       <View style={styles.container}>
+           {children}
+       </View>
+   )
 };
 
 const styles = StyleSheet.create({
-   container:{
-       paddingRight: 15
-   }
-});
-
+    container: {
+        paddingRight: 15,
+    }
+})
 export default RightHeaderComponent;

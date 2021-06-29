@@ -4,9 +4,10 @@ import {primary} from '../../assets/styles/primary.styles';
 import {Avatar} from 'react-native-elements';
 import ProfilePicture from '../../assets/images/profile-picture.jpg';
 import verifiedUser from '../../assets/images/verified.png';
-import ProfileHeaderComponent from '../profileHeader/profileHeader.component';
+import VerifiedComponent from '../Verified/verified.component';
 
 const CommentComponent = ({data, key}) =>{
+
     return(
         <View style={styles.comment} key={key}>
             <View style={primary().flexRow}>
@@ -19,7 +20,7 @@ const CommentComponent = ({data, key}) =>{
                     />
                 </View>
                 <View style={primary().alignStart}>
-                    <ProfileHeaderComponent
+                    <VerifiedComponent
                         username={data.user.username}
                         profileImage={verifiedUser}
                         verified={data.user.verified}

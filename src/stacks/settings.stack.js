@@ -2,9 +2,6 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import SettingsScreen from '../screens/settings.screen';
 import TestScreen from '../screens/test.screen';
-import HeaderComponent from '../components/header.component';
-import {Text, TouchableOpacity} from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {primary, stackHeaderStyle} from '../assets/styles/primary.styles';
 import {HapticFeedBack} from '../components/assets/hapticFeedback.component';
 import {Icon} from 'react-native-elements';
@@ -29,7 +26,7 @@ const SettingsStack = () => {
                     headerTitleStyle: stackHeaderStyle().title,
                     headerLeft: () => (
                         <LeftHeaderComponent
-                            isButton={true}
+                            button={true}
                             iconName="keyboard-backspace"
                             iconColor={primary().textColor}
                             iconSize={26}

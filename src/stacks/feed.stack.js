@@ -2,13 +2,12 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from '../screens/home.screen';
 import {primary, stackHeaderStyle} from '../assets/styles/primary.styles';
-import SettingsStack from './settings.stack';
 import Logo from '../assets/images/logo.png';
 import {HapticFeedBack} from '../components/assets/hapticFeedback.component';
-import CommentScreen from '../screens/comment.screen';
 import RightHeaderComponent from '../components/header/right.header.component';
 import CenterHeaderComponent from '../components/header/center.header.component';
 import LeftHeaderComponent from '../components/header/left.header.component';
+import {TouchableOpacity, View} from 'react-native';
 const Stack = createStackNavigator();
 
 const FeedStack = () => {
@@ -27,7 +26,12 @@ const FeedStack = () => {
                     headerLeft: () => (
                        <LeftHeaderComponent
                            title="Feed"
-                           titleStyle={{fontSize: 22, fontWeight: '600', marginLeft: 0, color: primary().textColor}}
+                           titleStyle={{
+                               fontSize: 22,
+                               fontWeight: '600',
+                               marginLeft: 0,
+                               color: primary().title.color
+                           }}
                        />
                     ),
                     headerTitle: () => (
@@ -38,40 +42,25 @@ const FeedStack = () => {
                     ),
 
                     headerRight: () => (
-                        <RightHeaderComponent
-                            isButton={true}
-                            iconName="admin-panel-settings"
-                            iconColor={primary().textColor}
-                            iconSize={26}
-                            onPress={() => {
-                                HapticFeedBack('impactLight')
-                                navigation.navigate('SettingsStack')
-                            }}
-                        />)
-                    ,
-                    headerStyle: [
-                        stackHeaderStyle().headerBackground,
-                        stackHeaderStyle().emptyShadowOffset
-                    ]
-                })}
-            />
-            <Stack.Screen
-                name="Comments" component={CommentScreen}
-                options={({ navigation }) => ({
-                    headerShown: true,
-                    headerTitle: "Comments",
-                    headerTitleStyle: stackHeaderStyle().title,
-                    headerLeft: () => (
-                        <LeftHeaderComponent
-                            isButton={true}
-                            iconName="keyboard-backspace"
-                            iconColor={primary().textColor}
-                            iconSize={26}
-                            onPress={() => {
-                                HapticFeedBack('impactLight')
-                                navigation.goBack()
-                            }}
-                        />
+                        <View style={primary().flexRow}>
+                            <RightHeaderComponent
+                                button={true}
+                                buttonStyle={{
+                                    borderRadius: 30,
+                                    padding: 4,
+                                    backgroundColor: "rgba(24, 34, 51,0.6)"
+                                }}
+                                iconName="md-search"
+                                iconType="ionicon"
+                                iconColor="#fff"
+                                iconSize={20}
+                                onPress={() => {
+                                    HapticFeedBack('impactLight')
+                                    navigation.navigate('SearchStack')
+                                }}
+                            />
+                        </View>
+
                     ),
                     headerStyle: [
                         stackHeaderStyle().headerBackground,

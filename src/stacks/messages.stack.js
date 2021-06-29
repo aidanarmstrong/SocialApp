@@ -5,6 +5,8 @@ import HeaderComponent from '../components/header.component';
 import {Text} from 'react-native';
 import {primary, stackHeaderStyle} from '../assets/styles/primary.styles';
 import CenterHeaderComponent from '../components/header/center.header.component';
+import RightHeaderComponent from '../components/header/right.header.component';
+import {HapticFeedBack} from '../components/assets/hapticFeedback.component';
 const Stack = createStackNavigator();
 
 const MessagesStack = () => {
@@ -21,6 +23,18 @@ const MessagesStack = () => {
                             titleStyle={stackHeaderStyle().title}
                         />
                     ),
+                    headerRight: () => (
+                        <RightHeaderComponent
+                            isButton={true}
+                            iconName="new-message"
+                            iconType="entypo"
+                            iconColor={primary().textColor}
+                            iconSize={22}
+                            onPress={() => {
+                                HapticFeedBack('impactLight')
+                            }}
+                        />
+                    ),
                     headerStyle: [
                         stackHeaderStyle().headerBackground,
                         stackHeaderStyle().emptyShadowOffset
@@ -29,6 +43,6 @@ const MessagesStack = () => {
             />
         </Stack.Navigator>
     )
-};
+}
 
 export default MessagesStack;

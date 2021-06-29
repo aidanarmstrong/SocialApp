@@ -4,7 +4,7 @@ import {primary} from '../../../assets/styles/primary.styles';
 import {HapticFeedBack} from '../../assets/hapticFeedback.component';
 import {Avatar, Icon} from 'react-native-elements';
 import ProfilePicture from '../../../assets/images/profile-picture.jpg';
-import ProfileHeaderComponent from '../../profileHeader/profileHeader.component';
+import VerifiedComponent from '../../Verified/verified.component';
 
 const PostHeader = (data) => {
     return(
@@ -32,7 +32,7 @@ const PostHeader = (data) => {
             </View>
             <View style={{justifyContent: 'center', alignItems: 'flex-start'}}>
                 <View style={primary().flexRow}>
-                    <ProfileHeaderComponent
+                    <VerifiedComponent
                         username={data.user.username}
                         verified={data.user.verified}
                         style={{width: "70%"}}

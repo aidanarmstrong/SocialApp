@@ -1,14 +1,14 @@
 import React from "react";
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import FeedStack from '../stacks/feed.stack';
-import SearchStack from '../stacks/search.stack';
 import NotificationsStack from '../stacks/notifications.stack';
 import MessagesStack from '../stacks/messages.stack';
-import TestScreen from '../screens/test.screen';
 import {bottomTabsStyles} from '../assets/styles/primary.styles';
 const Tab = createMaterialBottomTabNavigator();
 import {HapticFeedBack} from './assets/hapticFeedback.component';
 import {Icon} from 'react-native-elements';
+import ProfileStack from '../stacks/pofile.stack';
+import ClipScreen from '../screens/clips.screen';
 
 const MaterialBottomTabs = (props) => {
 
@@ -44,8 +44,8 @@ const MaterialBottomTabs = (props) => {
                 }}
             />
             <Tab.Screen
-                name="SearchTab"
-                component={SearchStack}
+                name="messagesTab"
+                component={MessagesStack}
                 listeners={() => ({
                     tabPress: (e) => {
                         tabPressed();
@@ -53,14 +53,14 @@ const MaterialBottomTabs = (props) => {
                 })}
                 options={{
                     tabBarIcon: ({ color, focused }) => (
-                        focused ? <Icon name="md-search-sharp" type="ionicon" color={color} size={iconSize} />
-                            : <Icon name="md-search-outline" type="ionicon" color={color} size={iconSize} />
+                        focused? <Icon name="chatbubble-sharp" type="ionicon" color={color} size={iconSize} />
+                            : <Icon name="chatbubble-outline" type="ionicon" color={color} size={iconSize} />
                     ),
                 }}
             />
             <Tab.Screen
-                name="AddTab"
-                component={TestScreen}
+                name="ClipsTab"
+                component={ClipScreen}
                 listeners={() => ({
                     tabPress: (e) => {
                         tabPressed();
@@ -68,8 +68,8 @@ const MaterialBottomTabs = (props) => {
                 })}
                 options={{
                     tabBarIcon: ({ color, focused }) => (
-                        focused ? <Icon name="md-add-sharp" type="ionicon" color={color} size={iconSize} />
-                            : <Icon name="md-add-outline" type="ionicon" color={color} size={iconSize} />
+                        focused ? <Icon name="md-videocam" type="ionicon" color={color} size={26} />
+                            : <Icon name="md-videocam-outline" type="ionicon" color={color} size={26} />
                     ),
                 }}
             />
@@ -89,8 +89,8 @@ const MaterialBottomTabs = (props) => {
                 }}
             />
             <Tab.Screen
-                name="messagesTab"
-                component={MessagesStack}
+                name="ProfileTab"
+                component={ProfileStack}
                 listeners={() => ({
                     tabPress: (e) => {
                         tabPressed();
@@ -98,8 +98,8 @@ const MaterialBottomTabs = (props) => {
                 })}
                 options={{
                     tabBarIcon: ({ color, focused }) => (
-                        focused? <Icon name="chatbubble-sharp" type="ionicon" color={color} size={iconSize} />
-                            : <Icon name="chatbubble-outline" type="ionicon" color={color} size={iconSize} />
+                        focused ? <Icon name="user" type="font-awesome" color={color} size={iconSize} />
+                            : <Icon name="user-o" type="font-awesome" color={color} size={iconSize} />
                     ),
                 }}
             />

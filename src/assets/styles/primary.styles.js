@@ -15,6 +15,9 @@ export const primary = () => {
         flexRow: {
             flexDirection: 'row'
         },
+        title: {
+            color: isDarkMode() ? "#fff" : "#486799"
+        },
         timestamp: {
             fontSize: 12,
             color: isDarkMode() ? '#c2c0c0' : '#665a5a'
@@ -22,7 +25,8 @@ export const primary = () => {
         activeOpacity: 0.6,
         alignStart: { justifyContent: 'center', alignItems: 'flex-start'},
         alignCenter: { justifyContent: 'center', alignItems: 'center'},
-        alignEnd: { justifyContent: 'center', alignItems: 'flex-end'}
+        alignEnd: { justifyContent: 'center', alignItems: 'flex-end'},
+        lightText: isDarkMode() ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)"
     };
 };
 
@@ -34,7 +38,7 @@ export const bottomTabsStyles = () => {
         },
         activeColor: isDarkMode() ? "#fff" : "#486799",
         inactiveColor: isDarkMode() ? "#b0b0b0" : "#8d95a1",
-        bottomIconSize: isAndroid() ? 20 : 26 ,
+        bottomIconSize: isAndroid() ? 20 : 24 ,
     }
 }
 
@@ -76,6 +80,12 @@ export const shareOptionsStyles = () =>{
         buttonColor: isDarkMode() ? "rgba(255,255,255,0.2)" : "#fff",
         overlayColor: "rgba(0,0,0,0.5)",
         bottomSheetColor: isDarkMode() ? "#3e3e42" : "#fff"
+    }
+}
+
+export const postStyle = () => {
+    return{
+        actionsBackground: isDarkMode() ? "rgba(255,255, 255, 0.3)" : "rgab(0,0,0,0.5)",
     }
 }
 
