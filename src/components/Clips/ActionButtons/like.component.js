@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {primary} from '../../../../assets/styles/primary.styles';
-import {HapticFeedBack} from '../../../assets/hapticFeedback.component';
 import {Icon} from 'react-native-elements';
+import {primary} from '../../../assets/styles/primary.styles';
+import {HapticFeedBack} from '../../assets/hapticFeedback.component';
 
 
-const LikePostComponent = (data) => {
+const LikeClipComponent = (data) => {
 
     const [state, setState] = useState({
         liked: data.liked,
@@ -25,9 +25,9 @@ const LikePostComponent = (data) => {
     return(
         <View
             style={{
-                width: '28%',
+                width: '33.3%',
                 justifyContent: 'center',
-                alignItems: 'flex-start',
+                alignItems: 'center',
             }}
         >
             <TouchableOpacity
@@ -35,19 +35,19 @@ const LikePostComponent = (data) => {
                 style={styles.likeButton}
                 onPress={() => selectLike()}
             >
-                <View style={primary().flexRow}>
+                <View style={primary().alignCenter}>
                     {
                         state.liked ? (
-                            <Icon name="heart" type="fontisto" color="#d43737" size={20} />
+                            <Icon name="heart" type="fontisto" color="#d43737" size={23} />
                         ) : (
-                            <Icon name="heart-alt" type="fontisto" color={primary().textColor} size={20} />
+                            <Icon name="heart" type="fontisto" color="#fff" size={23} />
                         )
                     }
-                    <View style={{justifyContent: 'center'}}>
-                        <Text style={styles.likes}>{state.likes}</Text>
-                    </View>
                 </View>
             </TouchableOpacity>
+            <View style={primary().alignCenter}>
+                <Text style={styles.likes}>{state.likes}</Text>
+            </View>
 
         </View>
     )
@@ -55,14 +55,12 @@ const LikePostComponent = (data) => {
 
 const styles = StyleSheet.create({
     likeButton: {
-        marginLeft: 20,
-        paddingBottom: 15
+        marginBottom: 5,
     },
     likes: {
-        marginLeft: 5,
-        color: primary().textColor
+        color: '#fff'
     }
 });
 
 
-export default LikePostComponent;
+export default LikeClipComponent;

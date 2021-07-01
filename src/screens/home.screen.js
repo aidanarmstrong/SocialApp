@@ -298,12 +298,13 @@ const HomeScreen = ({navigation}) => {
                                                    borderWidth: 1,
                                                    borderStyle: 'solid',
                                                    borderRadius: 20,
+                                                   backgroundColor: 'rgb(72,103, 153)',
                                                    borderColor: primary().lightText,
                                                }}
                                                activeOpacity={primary().activeOpacity}
                                                onPress={() => navigation.navigate('PostScreen')}
                                            >
-                                               <Text style={{color: primary().textColor}}>Post</Text>
+                                               <Text style={{color: "#fff"}}>Post</Text>
                                            </TouchableOpacity>
                                        </View>
                                    </View>

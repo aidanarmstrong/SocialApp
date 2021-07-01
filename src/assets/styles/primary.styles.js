@@ -9,7 +9,7 @@ export const isAndroid = () => {
 export const primary = () => {
     return {
         // changes background color of components
-        backgroundColor: isDarkMode() ? "#343840" : "#fff",
+        backgroundColor: isDarkMode() ? "rgb(37,37, 42)" : "#fff",
         textColor: isDarkMode() ? "#fff" : "#182233",
         textWhite: "#fff",
         flexRow: {
@@ -26,7 +26,7 @@ export const primary = () => {
         alignStart: { justifyContent: 'center', alignItems: 'flex-start'},
         alignCenter: { justifyContent: 'center', alignItems: 'center'},
         alignEnd: { justifyContent: 'center', alignItems: 'flex-end'},
-        lightText: isDarkMode() ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)"
+        lightText: isDarkMode() ? "rgba(255,255,255,0.4)" : "rgb(86,87,93)",
     };
 };
 
@@ -36,7 +36,7 @@ export const bottomTabsStyles = () => {
         bottomTabsStyle: {
             backgroundColor: primary().backgroundColor,
         },
-        activeColor: isDarkMode() ? "#fff" : "#486799",
+        activeColor: "#486799",
         inactiveColor: isDarkMode() ? "#b0b0b0" : "#8d95a1",
         bottomIconSize: isAndroid() ? 20 : 24 ,
     }
