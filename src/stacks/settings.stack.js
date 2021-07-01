@@ -5,7 +5,7 @@ import TestScreen from '../screens/test.screen';
 import {primary, stackHeaderStyle} from '../assets/styles/primary.styles';
 import {HapticFeedBack} from '../components/assets/hapticFeedback.component';
 import {Icon} from 'react-native-elements';
-import LeftHeaderComponent from '../components/header/left.header.component';
+import LeftHeaderComponent from '../components/Header/left.header.component';
 const Stack = createStackNavigator();
 
 const SettingsStack = () => {

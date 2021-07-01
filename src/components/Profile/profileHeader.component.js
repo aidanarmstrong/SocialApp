@@ -1,7 +1,7 @@
 import React from 'react';
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
 import {isAndroid, primary} from '../../assets/styles/primary.styles';
-import RightHeaderComponent from '../header/right.header.component';
+import RightHeaderComponent from '../Header/right.header.component';
 import {HapticFeedBack} from '../assets/hapticFeedback.component';
 import {Avatar} from 'react-native-elements';
 import ProfilePicture from '../../assets/images/profile-picture.jpg';

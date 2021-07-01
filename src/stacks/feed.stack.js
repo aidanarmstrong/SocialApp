@@ -4,9 +4,9 @@ import HomeScreen from '../screens/HomeScreen/home.screen';
 import {primary, stackHeaderStyle} from '../assets/styles/primary.styles';
 import Logo from '../assets/images/logo.png';
 import {HapticFeedBack} from '../components/assets/hapticFeedback.component';
-import RightHeaderComponent from '../components/header/right.header.component';
-import CenterHeaderComponent from '../components/header/center.header.component';
-import LeftHeaderComponent from '../components/header/left.header.component';
+import RightHeaderComponent from '../components/Header/right.header.component';
+import CenterHeaderComponent from '../components/Header/center.header.component';
+import LeftHeaderComponent from '../components/Header/left.header.component';
 import {TouchableOpacity, View} from 'react-native';
 const Stack = createStackNavigator();
 

@@ -2,11 +2,12 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import SearchScreen from '../screens/SearchScreen/search.screen';
 import {primary, stackHeaderStyle} from '../assets/styles/primary.styles';
-const Stack = createStackNavigator();
-import CenterHeaderComponent from '../components/header/center.header.component';
-import LeftHeaderComponent from '../components/header/left.header.component';
+import CenterHeaderComponent from '../components/Header/center.header.component';
+import LeftHeaderComponent from '../components/Header/left.header.component';
 import {HapticFeedBack} from '../components/assets/hapticFeedback.component';
 import TestScreen from '../screens/test.screen';
+
+const Stack = createStackNavigator();
 
 const SearchStack = () => {
     return(

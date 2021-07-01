@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {StyleSheet, FlatList, ScrollView, View, RefreshControl, Text, TextInput, TouchableOpacity} from 'react-native';
 import CustomSafeAreaView from '../../components/assets/customSafeAreaView.component';
 import {primary} from '../../assets/styles/primary.styles';
-import PostComponent from '../../components/post/post.component';
+import PostComponent from '../../components/Post/post.component';
 import {Avatar, Divider, Icon} from 'react-native-elements';
 import ProfilePicture from '../../assets/images/profile-picture.jpg';
 

@@ -4,7 +4,7 @@ import ProfileHeaderComponent from '../../components/Profile/profileHeader.compo
 import {bottomTabsStyles, feedStyles, isAndroid, primary, safeAreaViewStyles} from '../../assets/styles/primary.styles';
 import {Icon} from 'react-native-elements';
 import {HapticFeedBack} from '../../components/assets/hapticFeedback.component';
-import PostComponent from '../../components/post/post.component';
+import PostComponent from '../../components/Post/post.component';
 
 
 const ProfileScreen = ({navigation}) => {

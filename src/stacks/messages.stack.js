@@ -1,11 +1,9 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import MessagesScreen from '../screens/MessagesScreen/messages.screen';
-import HeaderComponent from '../components/header.component';
-import {Text} from 'react-native';
 import {primary, stackHeaderStyle} from '../assets/styles/primary.styles';
-import CenterHeaderComponent from '../components/header/center.header.component';
-import RightHeaderComponent from '../components/header/right.header.component';
+import CenterHeaderComponent from '../components/Header/center.header.component';
+import RightHeaderComponent from '../components/Header/right.header.component';
 import {HapticFeedBack} from '../components/assets/hapticFeedback.component';
 const Stack = createStackNavigator();
 
