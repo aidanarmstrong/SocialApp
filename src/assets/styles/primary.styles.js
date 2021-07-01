@@ -9,8 +9,8 @@ export const isAndroid = () => {
 export const primary = () => {
     return {
         // changes background color of components
-        backgroundColor: isDarkMode() ? "rgb(37,37, 42)" : "#fff",
-        textColor: isDarkMode() ? "#fff" : "#182233",
+        backgroundColor: isDarkMode() ? "#22242a" : "#fff",
+        textColor: isDarkMode() ? "#fff" : "#2b2a2a",
         textWhite: "#fff",
         flexRow: {
             flexDirection: 'row'
@@ -44,7 +44,7 @@ export const bottomTabsStyles = () => {
 
 export const stackHeaderStyle = () => {
     return{
-        // changes the header background color
+        // changes the Header background color
         headerBackground: {
             backgroundColor: primary().backgroundColor,
         },
@@ -79,7 +79,7 @@ export const shareOptionsStyles = () =>{
     return{
         buttonColor: isDarkMode() ? "rgba(255,255,255,0.2)" : "#fff",
         overlayColor: "rgba(0,0,0,0.5)",
-        bottomSheetColor: isDarkMode() ? "#3e3e42" : "#fff"
+        bottomSheetColor: isDarkMode() ? "#22242a" : "#fff"
     }
 }
 

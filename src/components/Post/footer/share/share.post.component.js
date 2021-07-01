@@ -5,6 +5,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {HapticFeedBack} from '../../../assets/hapticFeedback.component';
 import BottomSheet from "react-native-gesture-bottom-sheet";
 import OptionsButton from './options.button.share';
+import {Icon} from 'react-native-elements';
+import {isDarkMode} from '../../../assets/checkDarkMode';
 
 const SharePostComponent = ({data}) => {
     const bottomSheet = useRef();
@@ -33,6 +35,13 @@ const SharePostComponent = ({data}) => {
         }
     };
 
+    const CheckDarkModeIcon = () => {
+        if(isDarkMode()){
+            return "paper-plane"
+        }
+        return "paper-plane-outline";
+    }
+
     return(
         <View
             style={{
@@ -47,7 +56,7 @@ const SharePostComponent = ({data}) => {
                 onPress={() => selectShare()}
             >
                 <View>
-                    <Ionicons name="md-share-outline" color={primary().textColor} size={20}/>
+                    <Icon name={CheckDarkModeIcon()} type="ionicon" color={primary().textColor} size={23}/>
                 </View>
             </TouchableOpacity>
 
@@ -75,7 +84,7 @@ const SharePostComponent = ({data}) => {
                     backgroundColor={shareOptionsStyles().buttonColor}
                     onPress={ () => {
                         HapticFeedBack('impactLight')
-                        alert("save post to device")
+                        alert("save Post to device")
                     }}
                 />
 

@@ -5,10 +5,10 @@ import NotificationsStack from '../stacks/notifications.stack';
 import MessagesStack from '../stacks/messages.stack';
 import {bottomTabsStyles} from '../assets/styles/primary.styles';
 const Tab = createMaterialBottomTabNavigator();
-import {HapticFeedBack} from './assets/hapticFeedback.component';
+import {HapticFeedBack} from '../components/assets/hapticFeedback.component';
 import {Icon} from 'react-native-elements';
 import ProfileStack from '../stacks/pofile.stack';
-import ClipScreen from '../screens/clips.screen';
+import ClipStack from '../stacks/clips.stack';
 
 const MaterialBottomTabs = (props) => {
 
@@ -60,7 +60,7 @@ const MaterialBottomTabs = (props) => {
             />
             <Tab.Screen
                 name="ClipsTab"
-                component={ClipScreen}
+                component={ClipStack}
                 listeners={() => ({
                     tabPress: (e) => {
                         tabPressed();

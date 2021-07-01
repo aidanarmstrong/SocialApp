@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {Text, TextInput, TouchableOpacity, View, StyleSheet} from 'react-native';
-import {isAndroid, postStyle, primary, safeAreaViewStyles} from '../assets/styles/primary.styles';
-import {HapticFeedBack} from '../components/assets/hapticFeedback.component';
-import LeftHeaderComponent from '../components/header/left.header.component';
-import RightHeaderComponent from '../components/header/right.header.component';
+import {isAndroid, postStyle, primary, safeAreaViewStyles} from '../../assets/styles/primary.styles';
+import {HapticFeedBack} from '../../components/assets/hapticFeedback.component';
+import LeftHeaderComponent from '../../components/Header/left.header.component';
+import RightHeaderComponent from '../../components/Header/right.header.component';
 import {Icon} from 'react-native-elements';
-import DismissKeyboard from '../components/assets/dismissKeyboard.component';
+import DismissKeyboard from '../../components/assets/dismissKeyboard.component';
 
 const PostScreen = ({navigation}) => {
 

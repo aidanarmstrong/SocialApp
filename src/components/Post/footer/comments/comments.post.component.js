@@ -3,12 +3,21 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {primary} from '../../../../assets/styles/primary.styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {HapticFeedBack} from '../../../assets/hapticFeedback.component';
+import {isDarkMode} from '../../../assets/checkDarkMode';
 
 const CommentsPostComponent = ({comments, navigation}) => {
 
     const selectComments = () => {
         HapticFeedBack('impactLight');
         navigation.navigate('Comments', comments);
+    }
+
+    const CheckDarkModeIcon = () => {
+        if(isDarkMode()){
+            return "md-chatbubble-ellipses"
+        }
+
+        return "md-chatbubble-ellipses-outline";
     }
 
     return (
@@ -24,7 +33,7 @@ const CommentsPostComponent = ({comments, navigation}) => {
                 onPress={() => selectComments()}
             >
                 <View style={primary().flexRow}>
-                    <Ionicons name="md-chatbubble-ellipses-outline" color={primary().textColor} size={23}/>
+                    <Ionicons name={CheckDarkModeIcon()} color={primary().textColor} size={23}/>
                     <View style={{justifyContent: 'center'}}>
                         <Text style={styles.comments}>{comments.numberOfComments}</Text>
                     </View>

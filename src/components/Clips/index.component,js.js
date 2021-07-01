@@ -18,10 +18,11 @@ const ClipsComponent = React.forwardRef( (props,ref) => {
     const video = useRef(ref)
     const [pressed, setPressed] = useState(false);
 
-
     const playVideo = () => {
         if(video) {
-            setPaused(false);
+            if(props.currentScreen === props.routeName){
+                setPaused(false);
+            }
         }
     }
 

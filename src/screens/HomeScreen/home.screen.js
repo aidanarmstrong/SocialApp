@@ -1,12 +1,12 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, FlatList, ScrollView, View, RefreshControl, Text, TextInput, TouchableOpacity} from 'react-native';
-import CustomSafeAreaView from '../components/assets/customSafeAreaView.component';
-import {feedStyles, primary} from '../assets/styles/primary.styles';
-import PostComponent from '../components/post/post.component';
+import CustomSafeAreaView from '../../components/assets/customSafeAreaView.component';
+import {primary} from '../../assets/styles/primary.styles';
+import PostComponent from '../../components/post/post.component';
 import {Avatar, Divider, Icon} from 'react-native-elements';
-import ProfilePicture from '../assets/images/profile-picture.jpg';
+import ProfilePicture from '../../assets/images/profile-picture.jpg';
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({navigation, route}) => {
 
     const [state, setState] = useState({
         refreshing: false,

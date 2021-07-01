@@ -1,24 +1,23 @@
-import React, {useCallback, useRef, useState} from 'react';
-import {Dimensions, View, StyleSheet, TouchableOpacity, FlatList, RefreshControl, Text, ScrollView} from 'react-native';
-import {primary} from '../assets/styles/primary.styles';
-import ClipsComponent from '../components/Clips/index.component,js';
+import React, {useState} from 'react';
+import {Dimensions, View, StyleSheet, FlatList} from 'react-native';
+import {primary} from '../../assets/styles/primary.styles';
+import ClipsComponent from '../../components/Clips/index.component,js';
+import {useSelector} from 'react-redux';
 
 
-const ClipScreen = () => {
+const ClipScreen = ({route}) => {
 
     const [state, setState] = useState({
-        isVisible: false,
         currentVisibleIndex: 0,
         viewabilityConfig: { viewAreaCoveragePercentThreshold: 70 }
     })
 
-    const cellRefs = useRef({})
-
+    const currentScreen = useSelector( (state) => state.currentScreenName);
 
     const  videos = [
         {
             id: 1,
-            video: require('../assets/videos/01.mp4'),
+            video: require('../../assets/videos/01.mp4'),
             description: "this is so cool",
             user: {
                 id: 1,
@@ -35,7 +34,7 @@ const ClipScreen = () => {
         },
         {
             id: 2,
-            video: require('../assets/videos/02.mp4'),
+            video: require('../../assets/videos/02.mp4'),
             description: "yes haha",
             user: {
                 id: 1,
@@ -52,7 +51,7 @@ const ClipScreen = () => {
         },
         {
             id: 3,
-            video: require('../assets/videos/01.mp4'),
+            video: require('../../assets/videos/01.mp4'),
             description: "what did he say hahah",
             user: {
                 id: 1,
@@ -69,7 +68,7 @@ const ClipScreen = () => {
         },
         {
             id: 4,
-            video: require('../assets/videos/02.mp4'),
+            video: require('../../assets/videos/02.mp4'),
             description: "what the hell is this lmao",
             user: {
                 id: 1,
@@ -86,7 +85,7 @@ const ClipScreen = () => {
         },
         {
             id: 5,
-            video: require('../assets/videos/02.mp4'),
+            video: require('../../assets/videos/02.mp4'),
             description: "ok but really?",
             user: {
                 id: 1,
@@ -114,7 +113,7 @@ const ClipScreen = () => {
                 snapToAlignment={"center"}
                 viewabilityConfig={state.viewabilityConfig}
                 disableIntervalMomentum
-                renderItem={ ({ item }) => <ClipsComponent data={item}/>}
+                renderItem={ ({ item }) => <ClipsComponent data={item} routeName={route.name} currentScreen={currentScreen}/>}
             />
         </View>
     )

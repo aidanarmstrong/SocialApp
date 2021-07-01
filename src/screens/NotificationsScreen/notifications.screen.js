@@ -1,15 +1,15 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-import CustomSafeAreaView from '../components/assets/customSafeAreaView.component';
+import CustomSafeAreaView from '../../components/assets/customSafeAreaView.component';
 
-const MessagesScreen = () => {
+const NotificationsScreen = () => {
     return(
         <CustomSafeAreaView>
             <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <Text>Messages Screen</Text>
+                <Text>Notifications Screen</Text>
             </View>
         </CustomSafeAreaView>
     )
 }
 
-export default MessagesScreen;
+export default NotificationsScreen;

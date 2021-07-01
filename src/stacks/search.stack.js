@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import SearchScreen from '../screens/search.screen';
+import SearchScreen from '../screens/SearchScreen/search.screen';
 import {primary, stackHeaderStyle} from '../assets/styles/primary.styles';
 const Stack = createStackNavigator();
 import CenterHeaderComponent from '../components/header/center.header.component';

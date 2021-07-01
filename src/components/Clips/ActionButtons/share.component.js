@@ -4,7 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import BottomSheet from "react-native-gesture-bottom-sheet";
 import {primary, shareOptionsStyles} from '../../../assets/styles/primary.styles';
 import {HapticFeedBack} from '../../assets/hapticFeedback.component';
-import OptionsButton from '../../post/footer/share/options.button.share';
+import OptionsButton from '../../Post/footer/share/options.button.share';
 import {Icon} from 'react-native-elements';
 
 const ShareClipComponent = ({data}) => {
@@ -76,7 +76,7 @@ const ShareClipComponent = ({data}) => {
                     backgroundColor={shareOptionsStyles().buttonColor}
                     onPress={ () => {
                         HapticFeedBack('impactLight')
-                        alert("save post to device")
+                        alert("save Post to device")
                     }}
                 />
 

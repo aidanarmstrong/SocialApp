@@ -3,6 +3,7 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {primary} from '../../../../assets/styles/primary.styles';
 import {HapticFeedBack} from '../../../assets/hapticFeedback.component';
 import {Icon} from 'react-native-elements';
+import {isDarkMode} from '../../../assets/checkDarkMode';
 
 
 const LikePostComponent = (data) => {
@@ -20,6 +21,13 @@ const LikePostComponent = (data) => {
                 liked: !prevState.liked
             }
         });
+    }
+
+    const CheckDarkModeIcon = () => {
+        if(isDarkMode()){
+            return "heart"
+        }
+        return "heart-alt";
     }
 
     return(
@@ -40,7 +48,7 @@ const LikePostComponent = (data) => {
                         state.liked ? (
                             <Icon name="heart" type="fontisto" color="#d43737" size={20} />
                         ) : (
-                            <Icon name="heart-alt" type="fontisto" color={primary().textColor} size={20} />
+                            <Icon name={CheckDarkModeIcon()} type="fontisto" color={primary().textColor} size={20} />
                         )
                     }
                     <View style={{justifyContent: 'center'}}>

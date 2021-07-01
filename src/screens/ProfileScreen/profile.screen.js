@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {Text, View, StyleSheet, TouchableOpacity, FlatList, RefreshControl} from 'react-native';
-import ProfileHeaderComponent from '../components/Profile/profileHeader.component';
-import {feedStyles, isAndroid, primary, safeAreaViewStyles} from '../assets/styles/primary.styles';
+import ProfileHeaderComponent from '../../components/Profile/profileHeader.component';
+import {bottomTabsStyles, feedStyles, isAndroid, primary, safeAreaViewStyles} from '../../assets/styles/primary.styles';
 import {Icon} from 'react-native-elements';
-import {HapticFeedBack} from '../components/assets/hapticFeedback.component';
-import PostComponent from '../components/post/post.component';
+import {HapticFeedBack} from '../../components/assets/hapticFeedback.component';
+import PostComponent from '../../components/post/post.component';
 
 
 const ProfileScreen = ({navigation}) => {
@@ -68,7 +68,7 @@ const ProfileScreen = ({navigation}) => {
                 verified: userData.verified
             },
             post: {
-                postMessage:  "first post ever ",
+                postMessage:  "first Post ever ",
                 timestamp: "12 day ago",
                 feedPhoto: false,
                 feedVideo: false,
@@ -122,7 +122,7 @@ const ProfileScreen = ({navigation}) => {
             >
                 {
                     posts ? (
-                        <Icon name="grid" type="ionicon" size={styles.iconSize} color={primary().textColor}/>
+                        <Icon name="grid" type="ionicon" size={styles.iconSize} color={bottomTabsStyles().activeColor}/>
                     ): (
                         <Icon name="grid-outline" type="ionicon" size={styles.iconSize} color={primary().textColor}/>
                     )
@@ -137,7 +137,7 @@ const ProfileScreen = ({navigation}) => {
             >
                 {
                     videos ? (
-                        <Icon name="videocam" type="ionicon" size={styles.iconSize} color={primary().textColor}/>
+                        <Icon name="videocam" type="ionicon" size={styles.iconSize} color={bottomTabsStyles().activeColor}/>
                     ): (
                         <Icon name="videocam-outline" type="ionicon" size={styles.iconSize} color={primary().textColor}/>
                     )
@@ -152,7 +152,7 @@ const ProfileScreen = ({navigation}) => {
             >
                 {
                     liked ? (
-                        <Icon name="md-heart" type="ionicon" size={styles.iconSize} color={primary().textColor}/>
+                        <Icon name="md-heart" type="ionicon" size={styles.iconSize} color={bottomTabsStyles().activeColor}/>
                     ): (
                         <Icon name="md-heart-outline" type="ionicon" size={styles.iconSize} color={primary().textColor}/>
                     )
@@ -276,7 +276,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    iconSize: 22
+    iconSize: 22,
 })
 
 export default ProfileScreen;

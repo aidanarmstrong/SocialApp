@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import MessagesScreen from '../screens/messages.screen';
+import MessagesScreen from '../screens/MessagesScreen/messages.screen';
 import HeaderComponent from '../components/header.component';
 import {Text} from 'react-native';
 import {primary, stackHeaderStyle} from '../assets/styles/primary.styles';

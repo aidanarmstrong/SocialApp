@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
-import CustomSafeAreaView from '../components/assets/customSafeAreaView.component';
-import {primary} from '../assets/styles/primary.styles';
-import CommentComponent from '../components/comment/comment.component';
+import CustomSafeAreaView from '../../components/assets/customSafeAreaView.component';
+import {primary} from '../../assets/styles/primary.styles';
+import CommentComponent from '../../components/Comment/comment.component';
 
 const CommentScreen = (props) => {
 

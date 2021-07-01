@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import SettingsScreen from '../screens/settings.screen';
+import SettingsScreen from '../screens/SettingsScreen/settings.screen';
 import TestScreen from '../screens/test.screen';
 import {primary, stackHeaderStyle} from '../assets/styles/primary.styles';
 import {HapticFeedBack} from '../components/assets/hapticFeedback.component';

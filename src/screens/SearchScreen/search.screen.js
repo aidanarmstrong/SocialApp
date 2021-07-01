@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, View} from 'react-native';
-import CustomSafeAreaView from '../components/assets/customSafeAreaView.component';
+import CustomSafeAreaView from '../../components/assets/customSafeAreaView.component';
 
 const SearchScreen = () => {
     return(
