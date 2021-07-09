@@ -2,9 +2,10 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import MessagesScreen from '../screens/MessagesScreen/messages.screen';
 import {primary, stackHeaderStyle} from '../assets/styles/primary.styles';
-import CenterHeaderComponent from '../components/Header/center.header.component';
 import RightHeaderComponent from '../components/Header/right.header.component';
 import {HapticFeedBack} from '../components/assets/hapticFeedback.component';
+import LeftHeaderComponent from '../components/Header/left.header.component';
+import {View} from 'react-native';
 const Stack = createStackNavigator();
 
 const MessagesStack = () => {
@@ -15,23 +16,46 @@ const MessagesStack = () => {
                 component={MessagesScreen}
                 options={({ navigation }) => ({
                     headerShown: true,
-                    headerTitle: () => (
-                        <CenterHeaderComponent
+                    headerLeft: () => (
+                        <LeftHeaderComponent
                             title="Messages"
                             titleStyle={stackHeaderStyle().title}
                         />
                     ),
+                    headerTitle: null,
                     headerRight: () => (
-                        <RightHeaderComponent
-                            isButton={true}
-                            iconName="new-message"
-                            iconType="entypo"
-                            iconColor={primary().textColor}
-                            iconSize={22}
-                            onPress={() => {
-                                HapticFeedBack('impactLight')
-                            }}
-                        />
+                        <View style={primary().flexRow}>
+                            <RightHeaderComponent
+                                button={true}
+                                buttonStyle={{
+                                    borderRadius: 30,
+                                    padding: 6,
+                                    backgroundColor: "rgb(240, 240, 240)"
+                                }}
+                                iconName="md-search"
+                                iconType="ionicon"
+                                iconColor="rgb(150,150,150)"
+                                iconSize={20}
+                                onPress={() => {
+                                    HapticFeedBack('impactLight')
+                                }}
+                            />
+                            <RightHeaderComponent
+                                button={true}
+                                buttonStyle={{
+                                    borderRadius: 30,
+                                    padding: 6,
+                                    backgroundColor: "rgb(240, 240, 240)"
+                                }}
+                                iconName="bell-ring"
+                                iconType="material-community"
+                                iconColor="rgb(150,150,150)"
+                                iconSize={20}
+                                onPress={() => {
+                                    HapticFeedBack('impactLight')
+                                }}
+                            />
+                        </View>
                     ),
                     headerStyle: [
                         stackHeaderStyle().headerBackground,

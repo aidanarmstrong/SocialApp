@@ -71,7 +71,7 @@ export const feedStyles = () => {
 
 export const safeAreaViewStyles = () => {
     return {
-        backgroundColor: isDarkMode() ? "#323131" : "rgb(237,241,244)",
+        backgroundColor: isDarkMode() ? "#181818" : "rgb(237,241,244)",
     }
 }
 

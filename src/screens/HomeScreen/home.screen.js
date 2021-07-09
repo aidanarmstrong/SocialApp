@@ -257,7 +257,9 @@ const HomeScreen = ({navigation, route}) => {
                             >
                                 <TouchableOpacity
                                     style={{
-                                        width: "85%",
+                                        width: "100%",
+                                        height: 50,
+                                        justifyContent: 'center'
                                     }}
                                     activeOpacity={0.3}
                                     onPress={() => navigation.navigate('PostScreen')}

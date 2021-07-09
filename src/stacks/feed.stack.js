@@ -47,12 +47,12 @@ const FeedStack = () => {
                                 button={true}
                                 buttonStyle={{
                                     borderRadius: 30,
-                                    padding: 4,
-                                    backgroundColor: "rgba(24, 34, 51,0.6)"
+                                    padding: 6,
+                                    backgroundColor: "rgb(240, 240, 240)"
                                 }}
                                 iconName="md-search"
                                 iconType="ionicon"
-                                iconColor="#fff"
+                                iconColor="rgb(150,150,150)"
                                 iconSize={20}
                                 onPress={() => {
                                     HapticFeedBack('impactLight')
