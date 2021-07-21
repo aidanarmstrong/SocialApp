@@ -73,6 +73,7 @@ const PostScreen = ({navigation}) => {
                 </View>
                 <View style={{margin: 15}}>
                     <TextInput
+                        autoFocus
                         style={styles.textInput}
                         onChangeText={(post) => {
                             setPost(post)

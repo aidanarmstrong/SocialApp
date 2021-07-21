@@ -6,6 +6,7 @@ import RightHeaderComponent from '../components/Header/right.header.component';
 import {HapticFeedBack} from '../components/assets/hapticFeedback.component';
 import LeftHeaderComponent from '../components/Header/left.header.component';
 import {View} from 'react-native';
+import ChatScreen from '../screens/MessagesScreen/chat.screen';
 const Stack = createStackNavigator();
 
 const MessagesStack = () => {

@@ -55,6 +55,7 @@ export const stackHeaderStyle = () => {
             },
         },
         title: {
+            justifyContent: 'center',
             fontSize: 20,
             fontWeight: '500',
             color: primary().textColor,

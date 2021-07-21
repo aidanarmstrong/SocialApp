@@ -10,6 +10,6 @@ const SearchScreen = () => {
             </View>
         </CustomSafeAreaView>
     )
-}
+};
 
 export default SearchScreen;

@@ -12,6 +12,9 @@ import {useDispatch} from 'react-redux';
 import {NavigationContainer} from '@react-navigation/native';
 import {SetCurrentScreen} from '../actions/nav.actions';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import ChatScreen from '../screens/MessagesScreen/chat.screen';
+import {View} from 'react-native';
+import RightHeaderComponent from '../components/Header/right.header.component';
 
 const Stack = createStackNavigator();
 
@@ -82,6 +85,75 @@ const Navigation = () => {
                                     navigation.goBack()
                                 }}
                             />
+                        ),
+                        headerStyle: [
+                            stackHeaderStyle().headerBackground,
+                            stackHeaderStyle().emptyShadowOffset
+                        ]
+                    })}
+                />
+                <Stack.Screen
+                    name="Chat"
+                    component={ChatScreen}
+                    options={({ navigation, route }) => ({
+                        headerShown: true,
+                        headerLeft: () => (
+                            <View style={primary().flexRow}>
+                                <LeftHeaderComponent
+                                    button={true}
+                                    buttonStyle={{
+                                        borderRadius: 30,
+                                        padding: 6,
+                                        backgroundColor: "rgb(240, 240, 240)"
+                                    }}
+                                    iconName="chevron-back"
+                                    iconType="ionicon"
+                                    iconColor="rgb(150,150,150)"
+                                    iconSize={20}
+                                    onPress={() => {
+                                        navigation.goBack();
+                                    }}
+                                />
+                                <LeftHeaderComponent
+                                    title={route.params.data.user.firstName + " " + route.params.data.user.lastName}
+                                    titleStyle={stackHeaderStyle().title}
+                                />
+                            </View>
+                        ),
+                        headerTitle: null,
+                        headerRight: () => (
+                            <View style={primary().flexRow}>
+                                <RightHeaderComponent
+                                    button={true}
+                                    buttonStyle={{
+                                        borderRadius: 30,
+                                        padding: 6,
+                                        backgroundColor: "rgb(240, 240, 240)"
+                                    }}
+                                    iconName="videocam"
+                                    iconType="ionicon"
+                                    iconColor="rgb(150,150,150)"
+                                    iconSize={20}
+                                    onPress={() => {
+                                        HapticFeedBack('impactLight')
+                                    }}
+                                />
+                                <RightHeaderComponent
+                                    button={true}
+                                    buttonStyle={{
+                                        borderRadius: 30,
+                                        padding: 6,
+                                        backgroundColor: "rgb(240, 240, 240)"
+                                    }}
+                                    iconName="call"
+                                    iconType="ionicon"
+                                    iconColor="rgb(150,150,150)"
+                                    iconSize={20}
+                                    onPress={() => {
+                                        HapticFeedBack('impactLight')
+                                    }}
+                                />
+                            </View>
                         ),
                         headerStyle: [
                             stackHeaderStyle().headerBackground,

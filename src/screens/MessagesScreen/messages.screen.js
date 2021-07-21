@@ -1,19 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {FlatList, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View} from 'react-native';
 import CustomSafeAreaView from '../../components/assets/customSafeAreaView.component';
 import {primary} from '../../assets/styles/primary.styles';
-import {Avatar} from 'react-native-elements';
+import {Avatar, SearchBar} from 'react-native-elements';
 import ProfilePicture from '../../assets/images/profile-picture.jpg';
 import VerifiedComponent from '../../components/Verified/verified.component';
 import verifiedUser from '../../assets/images/verified.png';
 
-const MessagesScreen = () => {
+const MessagesScreen = (props) => {
 
+    const [state, setState] = useState({
+        searchTerm: ''
+    });
 
    const MessageComponent = ({data}) => (
        <TouchableOpacity
            style={styles.messageContainer}
-           activeOpacity={0.8}
+           activeOpacity={0.9}
+           onPress={() => props.navigation.navigate('Chat', {data})}
        >
            <View style={[primary().flexRow, {width: 300}]}>
                <View style={styles.profilePicture}>
@@ -26,7 +30,7 @@ const MessagesScreen = () => {
                </View>
                <View style={styles.message}>
                    <VerifiedComponent
-                       username={data.user.username}
+                       username={data.user.firstName + " " + data.user.lastName}
                        profileImage={verifiedUser}
                        verified={data.user.verified}
                        content={
@@ -35,7 +39,7 @@ const MessagesScreen = () => {
                                    <View style={{width: "80%"}}>
                                        <Text numberOfLines={1} style={styles.text}>{data.message}</Text>
                                    </View>
-                                   <View style={{width: "20%", justifyContent: 'center', alignItems: 'flex-end'}}>
+                                   <View style={{width: "25%", justifyContent: 'center', alignItems: 'flex-end'}}>
                                        <Text style={styles.date}>{data.timestamp}</Text>
                                    </View>
                                </View>
@@ -70,6 +74,8 @@ const MessagesScreen = () => {
                     {
                         id: 1,
                         user: {
+                            firstName: "Ben",
+                            lastName: "Ginty",
                             username: "ben.ginty",
                             verified: false,
                         },
@@ -79,6 +85,8 @@ const MessagesScreen = () => {
                     {
                         id: 2,
                         user: {
+                            firstName: "Neil",
+                            lastName: "Armstrong",
                             username: "neil.armstrong",
                             verified: true,
                         },
@@ -88,6 +96,8 @@ const MessagesScreen = () => {
                     {
                         id: 3,
                         user: {
+                            firstName: "Kate",
+                            lastName: "Armstrong",
                             username: "kate.armstrong",
                             verified: true,
                         },
@@ -97,6 +107,8 @@ const MessagesScreen = () => {
                     {
                         id: 5,
                         user: {
+                            firstName: "Niall",
+                            lastName: "Armstrong",
                             username: "niallarmstrong",
                             verified: false,
                         },
@@ -121,11 +133,11 @@ const styles = StyleSheet.create({
     },
     messageContainer: {
         justifyContent: 'center',
-        margin: 5,
-        marginLeft: 15,
-        marginRight: 15,
-        padding: 5,
-        borderRadius: 20,
+        margin: 1,
+        marginLeft: 5,
+        marginRight: 5,
+        padding: 10,
+        borderRadius: 5,
         backgroundColor: primary().backgroundColor
     },
     profilePicture: {
